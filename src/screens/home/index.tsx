@@ -93,7 +93,7 @@ export default function Home() {
                 console.log('Sending data...', `${import.meta.env.VITE_API_URL}/calculate`);
                 const response = await axios({
                     method: 'post',
-                    url: `https://be-orpin-one.vercel.app`,
+                    url: `https://be-orpin-one.vercel.app/calculate`,
                     data: {
                         image: canvas.toDataURL('image/png'),
                         dict_of_vars: dictOfVars,
