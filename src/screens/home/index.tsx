@@ -145,6 +145,9 @@ export default function Home() {
                         ]);
                     }, 1000);
                 });
+                
+                // Clear the canvas after calculation
+                resetCanvas();
             }
         } catch (error) {
             console.error('Error sending data:', error);
