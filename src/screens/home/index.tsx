@@ -85,6 +85,20 @@ export default function Home() {
         }
     }, []);
 
+    useEffect(() => {
+        const handleKeyPress = (event: KeyboardEvent) => {
+            if (event.key === 'Enter') {
+                sendData();
+            }
+        };
+
+        window.addEventListener('keypress', handleKeyPress);
+
+        return () => {
+            window.removeEventListener('keypress', handleKeyPress);
+        };
+    }, []);
+
     //send data to BE
     const sendData = async () => {
         try {
