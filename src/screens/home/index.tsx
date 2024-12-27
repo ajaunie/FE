@@ -38,10 +38,10 @@ export default function Home() {
 
     useEffect(() => {
         if (results.length > 0) {
-            results.forEach(({ expression, answer }) => {
-                const latex = `\\(\\LARGE{${expression} = ${answer}}\\)`;
-                setLatexExpression(prevLatex => [...prevLatex, latex]);
-            });
+            const newLatex = results.map(({ expression, answer }) => 
+                `\\(\\LARGE{${expression} = ${answer}}\\)`
+            );
+            setLatexExpression(newLatex);
         }
     }, [results]);
 
@@ -90,10 +90,6 @@ export default function Home() {
         try {
             const canvas = canvasRef.current;    
             if (canvas) {
-                // Clear previous results before new calculation
-                setResults([]);
-                setLatexExpression([]);
-                
                 console.log('Sending data...', `${import.meta.env.VITE_API_URL}/calculate`);
                 const response = await axios({
                     method: 'post',
