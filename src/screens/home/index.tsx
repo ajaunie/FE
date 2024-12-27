@@ -90,6 +90,10 @@ export default function Home() {
         try {
             const canvas = canvasRef.current;    
             if (canvas) {
+                // Clear previous results before new calculation
+                setResults([]);
+                setLatexExpression([]);
+                
                 console.log('Sending data...', `${import.meta.env.VITE_API_URL}/calculate`);
                 const response = await axios({
                     method: 'post',
